@@ -1,6 +1,7 @@
 package com.example.demo.data;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
@@ -16,8 +17,13 @@ public class BaseDeDonneesTests {
 
     @Test
     void uneVoiture(){
-        // tester les méthodes de l'interface CrudRepository qui permette d'accéder à la base de données: https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html
-        // save, find, delete...
+        Voiture voiture = Mockito.mock(Voiture.class);
+        voiture.setMarque("Suzuki");
+        voiture.setPrix(17500);
+        voitureRepository.save(voiture);
+        when(voitureRepository.findAll()).thenReturn(Collections.singletonList(voiture));
     }
+
+
 
 }

@@ -9,6 +9,11 @@ public class VoitureTest {
 
     @Test
     void creerVoiture(){
+        Voiture voiture = new Voiture();
+        voiture.setMarque("Honda");
+        voiture.setPrix(12000);
+        Assert.notNull(voiture, "La voiture ne peut pas être null");
+        Assert.notNull(voiture.getMarque(), "La marque ne peut pas être null");
+        Assert.isTrue(voiture.getPrix() > 0, "Le prix doit être supérieur à 0");
     }
-
 }
